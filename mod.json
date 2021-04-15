@@ -1,0 +1,9 @@
+{
+	"Name": "RMBundles",
+	"Authors": ["3ti65"],
+	"Description": "Loads all bundles that RM loads",
+	"URL": "none",
+	"Version": "0",
+	"HasWebUI": false,
+	"HasVeniceEXT": true
+}
