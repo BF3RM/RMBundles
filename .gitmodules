@@ -1,0 +1,3 @@
+[submodule "ext/Shared/BundleLoader"]
+	path = ext/Shared/BundleLoader
+	url = https://github.com/BF3RM/RMBundleLoader.git
