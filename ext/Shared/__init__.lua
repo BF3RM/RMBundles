@@ -9,9 +9,14 @@ local m_Logger = Logger("RMBundles", false)
 function RMBundles:__init()
 	m_Logger:Write("init")
 
+	Hooks:Install('EntityFactory:CreateFromBlueprint', 1, self, self.OnEntityCreateFromBlueprint)
 	Hooks:Install('ResourceManager:LoadBundles', 100, self, self.OnLoadBundles)
 	Events:Subscribe('Level:RegisterEntityResources', self, self.OnRegisterEntityResources)
 	Events:Subscribe('Level:LoadResources', self, self.OnLoadResources)
+end
+
+function RMBundles:OnEntityCreateFromBlueprint(p_Hook, p_Blueprint, p_Transform, p_Variation, p_ParentRepresentative)
+	m_BundleLoader:OnEntityCreateFromBlueprint(p_Hook, p_Blueprint, p_Transform, p_Variation, p_ParentRepresentative)
 end
 
 function string:split(sep)
@@ -19,6 +24,11 @@ function string:split(sep)
 	local pattern = string.format("([^%s]+)", sep)
 	self:gsub(pattern, function(c) fields[#fields+1] = c end)
 	return fields
+end
+
+function RMBundles:OnLoadBundles(p_Hook, p_Bundles, p_Compartment)
+	m_Logger:Write("OnLoadBundles")
+	m_BundleLoader:OnLoadBundles(p_Hook, p_Bundles, p_Compartment)
 end
 
 function RMBundles:OnLoadBundles(p_Hook, p_Bundles, p_Compartment)
