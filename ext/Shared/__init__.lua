@@ -9,8 +9,8 @@ local m_Logger = Logger("RMBundles", false)
 function RMBundles:__init()
 	m_Logger:Write("init")
 
-	Hooks:Install('EntityFactory:CreateFromBlueprint', 1, self, self.OnEntityCreateFromBlueprint)
-	Hooks:Install('ResourceManager:LoadBundles', 100, self, self.OnLoadBundles)
+	Hooks:Install('EntityFactory:CreateFromBlueprint', 901, self, self.OnEntityCreateFromBlueprint)
+	Hooks:Install('ResourceManager:LoadBundles', 901, self, self.OnLoadBundles)
 	Events:Subscribe('Level:RegisterEntityResources', self, self.OnRegisterEntityResources)
 	Events:Subscribe('Level:LoadResources', self, self.OnLoadResources)
 end
